@@ -16,7 +16,7 @@ This project is a Hack Machine code to assembly compiler written in Java. It tra
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/realRudraP/HackCompiler
+    git clone https://github.com/realRudraP/HackCompiler.git
     ```
 2. Navigate to the project directory:
     ```sh
@@ -62,4 +62,3 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
