@@ -3,5 +3,5 @@ public enum CommandType {
     C_ARITHEMTIC,
     C_PUSH,
     C_POP,
-    ERROR
+    C_INVALID
 }

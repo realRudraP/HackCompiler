@@ -8,6 +8,7 @@ import java.io.IOException;
 public class Parser {
     BufferedReader reader;
     String currentCommand;
+    static int  lineNumber = 1;
 
     Parser(String fileName) throws FileNotFoundException {
         reader = new BufferedReader(new FileReader(fileName));
@@ -31,6 +32,7 @@ public class Parser {
                     currentCommand = line;
                     return;
                 }
+                lineNumber++;
             }
             currentCommand = null;
         } catch (IOException e) {
@@ -42,7 +44,7 @@ public class Parser {
         return currentCommand;
     }
 
-    public CommandType commandType() {
+    public CommandType commandType() throws SyntaxErrorException {
         if (currentCommand != null) {
             String[] tokenizedCommand = currentCommand.split(" ");
             if (tokenizedCommand.length == 1) {
@@ -54,11 +56,14 @@ public class Parser {
                     return CommandType.C_PUSH;
                 case "pop":
                     return CommandType.C_POP;
+                default:
+                    throw new SyntaxErrorException("Could not translate line " + lineNumber + ": " + currentCommand);
             }
+        } else {
+            throw new SyntaxErrorException("No current command to parse");
         }
-        return CommandType.ERROR;
-
     }
+    
 
     public String arg0() {
         String[] tokenizedCommand = currentCommand.split(" ");
